@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// data bases  laste 2 viedo
 
+Route::get('tasks',function(){
+
+    $tasks = DB::table('tasks')->get();
+    return view('task',compact('tasks'));
+});
+
+Route::get('tasks/show/{id}', function($id){
+
+    $task = DB::table('tasks')->where('id', $id)->first();
+
+    return view('show',compact('task'));
+});
+
+
+
+/*
 Route::get('/about', function () {
     $name = request('name');
     return view('about', compact('name'));
@@ -51,35 +69,9 @@ Route::get('show/{id}', function ($id) {
     $task = $tasks[$id];
     return view('show',compact('task'));
 });
-
-
-
-
-// data bases  laste 2 viedo
-/*
-Route::get('tasks',function(){
-
-    $tasks = DB::table('tasks')->get();
-   // dd($tasks);
-    return view('task',compact('tasks'));
-});
-
-Route::get('tasks/show/{id}', function($id){
-
-    $task = DB::table('tasks')->where('id', $id)->first();
-    // $task = DB::table('tasks')->find($id);
-   // dd($task);
-
-    return view('show',compact('task'));
-});
 */
 
 
-
-
-
-
-// my work
 /*
 Route::get('/about',function () {
     $name = request('name');

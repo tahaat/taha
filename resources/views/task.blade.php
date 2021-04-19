@@ -8,18 +8,13 @@
 </head>
 <body>
     <ul>
-        {{-- @foreach ($tasks as $task)
+        @foreach ($tasks as $task)
             <li><a href="tasks/show/{{$task->id}}"> {{$task->title}}</a></li>
-        @endforeach --}}
+        @endforeach
 
-
-
-
-
-
-        <?php foreach ($tasks as $key => $task): ?>
+        {{-- <?php foreach ($tasks as $key => $task): ?>
         <li><a href={{'show/' . $key}}> <?php echo $task ?> </a></li>
-        <?php endforeach; ?>
+        <?php endforeach; ?> --}}
 
     </ul>
 </body>

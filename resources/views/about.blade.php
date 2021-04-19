@@ -8,13 +8,11 @@
 </head>
 <body>
     <h1> Hello, <?php echo $name; ?>!</h1>
-    {{-- <h1> Hello, {{$name}}!</h1> --}}
     <form action="store" method="post">
         @csrf
         <input type="text" name="name" id="name">
         <button type="submit">Send</button>
     </form>
-
 
     {{-- <h1>Hello,<?php echo $name; ?>! </h1>
     <from action= "store" method= "post">
