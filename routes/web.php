@@ -1,19 +1,38 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Models\Task;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
+
+
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('todo', function () {
+     $tasks=DB::table('tasks') ->orderBy('title', 'ascending') ->get();
+    return view('todo', compact('tasks'));
+});
+
+Route::post('store', function (Request $request) {
+     DB::table('tasks')->insert([
+
+          'title' => $request->title
+     ]);
+
+    return redirect()->back();
+});
+
+
+
+
+
+
+
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -83,3 +102,10 @@ Route::post('/store', function () {
     return view('about', compact('name'));
 });
 */
+
+
+
+
+
+
+
